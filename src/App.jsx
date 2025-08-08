@@ -6,14 +6,14 @@ import commentsFromServer from './api/comments.json';
 import usersFromServer from './api/users.json';
 
 const preparedPosts = postsFromServer.map(post => {
-  const userI = usersFromServer.find(user => user.id === post.userId);
+  const user = usersFromServer.find(findUser => findUser.id === post.userId);
   const comments = commentsFromServer.filter(
     comment => comment.postId === post.id,
   );
 
   return {
     ...post,
-    userI,
+    user,
     comments,
   };
 });
